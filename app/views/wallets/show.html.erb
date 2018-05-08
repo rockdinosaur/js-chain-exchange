@@ -1,3 +1,20 @@
 <div class="balance">
-  <%= @balance %>
+  Your balance is: $<%= @balance %>
+</div>
+
+<div class="transactions">
+  <ul>
+    <% @transactions.each do |transaction| %>
+      <% if transaction['fromAddress'] == @wallet.public_key %>
+        <li>
+          You have sent $<%= transaction['amount'] %> to <%= transaction['toAddress'] %>
+        </li>
+      <% else %>
+        <li>
+          You have received $<%= transaction['amount'] %> from <%= transaction['fromAddress'] ? transaction['fromAddress'] : '~~~the void~~~' %>
+        </li>
+
+      <% end %>
+    <% end %>
+  </ul>
 </div>

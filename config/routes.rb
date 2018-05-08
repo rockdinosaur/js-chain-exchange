@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     resources :wallets, only: [:show]
   end
 
-  get '/login', to: 'users#new'
+  # get '/login', to: 'users#new'
+  
 end
